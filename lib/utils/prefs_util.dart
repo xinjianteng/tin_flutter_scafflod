@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// SharedPreferences 工具类，统一管理应用偏好设置。
 class PrefsUtil {
   PrefsUtil._internal();
 
@@ -8,16 +12,24 @@ class PrefsUtil {
 
   late SharedPreferences _prefs;
   bool _initialized = false;
+  final Completer<void> _initializationCompleter = Completer<void>();
 
+  /// 确保 SharedPreferences 已初始化。
   static Future<void> ensureInitialized() async {
-    if (_instance._initialized) return;
-    await _instance._init();
+    if (_instance._initialized) return _instance._initializationCompleter.future;
+    return _instance._init();
   }
 
   Future<void> _init() async {
-    _prefs = await SharedPreferences.getInstance();
-    _saveBeginDate();
-    _initialized = true;
+    try {
+      _prefs = await SharedPreferences.getInstance();
+      _saveBeginDate();
+      _initialized = true;
+      _initializationCompleter.complete();
+    } catch (e, stack) {
+      _initializationCompleter.completeError(e, stack);
+      rethrow;
+    }
   }
 
   void _saveBeginDate() {
@@ -26,12 +38,14 @@ class PrefsUtil {
       if (beginDate == null) {
         _prefs.setString('beginDate', DateTime.now().toIso8601String());
       }
-    } catch (_) {}
+    } catch (e, stack) {
+      Get.log('Failed to save begin date: $e\n$stack', isError: true);
+    }
   }
 
   bool get isFirstOpen {
     if (!_initialized) return true;
-    return _prefs.getBool('isFirstOpen') ?? false;
+    return _prefs.getBool('isFirstOpen') ?? true;
   }
 
   Future<bool> setIsFirstOpen(bool value) async {

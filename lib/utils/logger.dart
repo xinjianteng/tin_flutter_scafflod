@@ -1,6 +1,6 @@
 import 'dart:io';
 
-/// 最小日志等级控制
+/// 日志等级。
 enum LogLevel { debug, info, warn, error }
 
 /// 统一的日志工具，支持等级过滤、控制台与文件输出。

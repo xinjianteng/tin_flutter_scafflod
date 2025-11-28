@@ -1,4 +1,4 @@
-/// 通用 API 返回体封装
+/// 标准化的 API 响应包装。
 class ApiResponse<T> {
   ApiResponse({
     required this.success,

@@ -22,7 +22,7 @@ class SearchPage extends StatelessWidget {
           children: [
             TextField(
               decoration: InputDecoration(
-                hintText: '输入关键词开始搜索',
+                hintText: AppStrings.searchHint,
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -34,7 +34,7 @@ class SearchPage extends StatelessWidget {
             Expanded(
               child: Center(
                 child: Text(
-                  '这里展示搜索结果列表',
+                  AppStrings.searchEmpty,
                   style: theme.textTheme.bodyMedium,
                 ),
               ),

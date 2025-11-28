@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '/routers/routes.dart';
 import '/values/values.dart';
-import 'package:get/get.dart';
 
 class NotFoundPage extends StatelessWidget {
   const NotFoundPage({super.key});
@@ -9,18 +9,18 @@ class NotFoundPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('页面不存在')),
+      appBar: AppBar(title: const Text(AppStrings.notFoundTitle)),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.error_outline, size: 48),
             const SizedBox(height: 12),
-            const Text('找不到页面'),
+            const Text(AppStrings.notFoundMessage),
             const SizedBox(height: 12),
             ElevatedButton(
               onPressed: () => Get.offAllNamed(AppRoutes.application),
-              child: Text('返回${AppStrings.home}'),
+              child: const Text(AppStrings.backToHome),
             ),
           ],
         ),

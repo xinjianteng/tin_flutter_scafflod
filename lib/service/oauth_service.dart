@@ -6,8 +6,8 @@ import '../models/models.dart';
 import '../utils/utils.dart';
 
 class OauthService extends GetxService {
-  final oauth = Oauth().obs;
-  final user = User().obs;
+  final oauth = ExampleOauth().obs;
+  final user = ExampleUser().obs;
   final isLogin = false.obs;
 
   @override
@@ -22,20 +22,23 @@ class OauthService extends GetxService {
       final oauthJson = PrefsUtil().oauth;
       if (oauthJson.isEmpty) return;
 
-      oauth.value = Oauth.fromJson(jsonDecode(oauthJson));
+      oauth.value = ExampleOauth.fromJson(jsonDecode(oauthJson));
       _updateLoginStatus(oauth.value);
+      user.value = ExampleUser(username: oauth.value.userName);
     } catch (e) {
       Get.log('Error decoding OAuth data: $e', isError: true);
     }
   }
 
-  void _updateLoginStatus(Oauth? oauthNew) {
+  void _updateLoginStatus(ExampleOauth? oauthNew) {
     if (oauthNew == null) {
       isLogin.value = false;
+      oauth.value = ExampleOauth();
+      user.value = ExampleUser();
       return;
     }
 
-    if (oauthNew.access_token != null) {
+    if (oauthNew.accessToken != null) {
       oauth.value = oauthNew;
       isLogin.value = true;
     } else {
@@ -43,10 +46,13 @@ class OauthService extends GetxService {
     }
   }
 
-  Future<void> login(Oauth oauth) async {
+  Future<void> login(ExampleOauth oauthNew) async {
     try {
-      _updateLoginStatus(oauth);
-      await PrefsUtil().setOauth(jsonEncode(oauth));
+      _updateLoginStatus(oauthNew);
+      user.value = ExampleUser(
+        username: oauthNew.userName ?? '示例用户',
+      );
+      await PrefsUtil().setOauth(jsonEncode(oauthNew));
     } catch (e) {
       Get.log('Error saving OAuth data: $e', isError: true);
     }

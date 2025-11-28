@@ -23,12 +23,12 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '快速登录模板',
+              AppStrings.loginTitle,
               style: theme.textTheme.titleLarge,
             ),
             const SizedBox(height: 12),
             Text(
-              '在这里替换为实际的登录表单逻辑，当前按钮会直接写入模拟 OAuth。',
+              AppStrings.loginTip,
               style: theme.textTheme.bodyMedium,
             ),
             const SizedBox(height: 24),
@@ -36,7 +36,7 @@ class LoginPage extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: logic.mockLogin,
-                child: const Text('模拟登录'),
+                child: const Text(AppStrings.mockLogin),
               ),
             ),
           ],

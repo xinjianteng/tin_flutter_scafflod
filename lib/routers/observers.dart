@@ -49,14 +49,4 @@ class RouteObservers<R extends Route<dynamic>> extends RouteObserver<R> {
     Get.log(AppPages.history.toList().toString());
   }
 
-  @override
-  void didStartUserGesture(
-      Route<dynamic> route, Route<dynamic>? previousRoute) {
-    super.didStartUserGesture(route, previousRoute);
-  }
-
-  @override
-  void didStopUserGesture() {
-    super.didStopUserGesture();
-  }
 }

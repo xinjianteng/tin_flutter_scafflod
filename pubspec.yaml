@@ -11,16 +11,19 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # UI & 体验（全端可用）
   cupertino_icons: ^1.0.6
+  flutter_screenutil: ^5.9.3
+  pull_to_refresh: ^2.0.0
+  flutter_smart_dialog: ^4.9.8+7
+  cached_network_image: ^3.4.1
 
-  # 状态管理 & 路由 & 网络
+  # 状态管理 & 路由
   get:
     git:
       url: "https://gitcode.com/openharmony-sig/fluttertpc_get.git"
 
-  cached_network_image: ^3.4.1
-
-  # 本地存储
+  # 本地存储（全端/部分端）
   shared_preferences:
     git:
       url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
@@ -28,23 +31,16 @@ dependencies:
       ref: "br_shared_preferences-v2.3.2_ohos"
   path_provider: ^2.1.1
 
-  # 权限
+  # 加解密（纯 Dart）
+  crypto: ^3.0.6
+  encrypt: ^5.0.1
+
+  # 按需启用的原生能力（移动/桌面可用，Web 需要移除）
   permission_handler:
     git:
       url: "https://gitcode.com/openharmony-sig/flutter_permission_handler.git"
       path: "permission_handler"
       ref: "br_permission_handler_v11.3.1_ohos"
-
-  # UI 支撑
-  flutter_screenutil: ^5.9.3
-  pull_to_refresh: ^2.0.0
-  flutter_smart_dialog: ^4.9.8+7
-
-  # 加解密
-  crypto: ^3.0.6
-  encrypt: ^5.0.1
-
-  # 数据库
   sqflite:
     git:
       url: "https://gitcode.com/openharmony-sig/flutter_sqflite.git"

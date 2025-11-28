@@ -1,4 +1,4 @@
-/// 应用入口：负责全局依赖绑定、刷新配置、路由挂载与日志输出。
+// 应用入口：绑定全局依赖、刷新配置与路由。
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -19,7 +19,7 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget with WidgetsBindingObserver {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
         headerBuilder: () => const ClassicHeader(
           height: 45.0,
           releaseText: '松开刷新',
-          refreshingText: '刷新中',
+          refreshingText: '刷新中...',
           completeText: '刷新完成',
           idleText: '下拉刷新',
         ),
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
           completeDuration: Duration(milliseconds: 100),
           canLoadingText: '松开加载更多',
           noDataText: '没有更多数据了',
-          loadingText: '加载中',
+          loadingText: '加载中...',
           idleText: '上拉加载',
         ),
         hideFooterWhenNotFull: true,
@@ -56,7 +56,6 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
           color: AppColors.primary,
           debugShowCheckedModeBanner: false,
           title: AppStrings.appName,
-          // 全局依赖在这里绑定，避免多处重复注册
           initialBinding: BindingsBuilder(() {
             Get.putAsync<OauthService>(() async {
               await PrefsUtil.ensureInitialized();

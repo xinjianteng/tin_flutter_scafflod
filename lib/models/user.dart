@@ -1,21 +1,21 @@
-class User {
-  // 用户名
+class ExampleUser {
+  /// 示例用户名。
   String? username;
 
-  User({
+  ExampleUser({
     this.username,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
-        username: json["username"],
+  factory ExampleUser.fromJson(Map<String, dynamic> json) => ExampleUser(
+        username: json['username'],
       );
 
   Map<String, dynamic> toJson() => {
-        "username": username,
+        'username': username,
       };
 
   @override
   String toString() {
-    return 'User{username: $username,';
+    return 'User{username: $username}';
   }
 }

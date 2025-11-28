@@ -4,7 +4,7 @@ import '/api/api_response.dart';
 import '/service/oauth_service.dart';
 import '/utils/logger.dart';
 
-/// 基于 GetConnect 的简易客户端，负责 Token 注入、日志与错误转换。
+/// 基于 GetConnect 的简易客户端：负责 Token 注入、日志与错误转换。
 class ApiClient extends GetConnect {
   ApiClient() {
     httpClient
@@ -30,7 +30,7 @@ class ApiClient extends GetConnect {
 
   String? get _token {
     if (Get.isRegistered<OauthService>()) {
-      return Get.find<OauthService>().oauth.value.access_token;
+      return Get.find<OauthService>().oauth.value.accessToken;
     }
     return null;
   }
@@ -75,7 +75,7 @@ class ApiClient extends GetConnect {
     return ApiResponse<T>(
       success: success,
       data: parsed,
-      message: success ? '' : '请求失败($statusCode)',
+      message: success ? '' : '请求失败 ($statusCode)',
       statusCode: statusCode,
     );
   }

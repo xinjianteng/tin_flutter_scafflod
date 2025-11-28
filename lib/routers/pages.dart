@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../pages/pages.dart';
-import 'middlewares/middlewares.dart';
 import 'routes.dart';
 
 class AppPages {

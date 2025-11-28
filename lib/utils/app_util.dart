@@ -18,18 +18,18 @@ class AppUtil {
   /// 生成一个随机的nonce字符串。
   ///
   /// 随机字符串用于安全相关的操作，如防止请求重复等。
-  static const String NONCE_SET =
+  static const String nonceSet =
       "0123456789abcdefghijklmnoprrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   /// 生成一个16字符长度的随机nonce字符串。
   ///
   /// 返回生成的随机字符串。
   static String getNonce() {
-    var length = NONCE_SET.length;
+    var length = nonceSet.length;
     var str = "";
     // 循环生成16位随机字符
     for (var i = 0; i < 16; i++) {
-      str = str + NONCE_SET[Random().nextInt(length)];
+      str = str + nonceSet[Random().nextInt(length)];
     }
     return str;
   }

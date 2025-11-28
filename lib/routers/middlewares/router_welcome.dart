@@ -7,10 +7,7 @@ import '../routes.dart';
 
 /// 欢迎页守卫：根据首次启动/登录状态决定跳转入口
 class RouteWelcomeMiddleware extends GetMiddleware {
-  @override
-  int? priority;
-
-  RouteWelcomeMiddleware({required this.priority});
+  RouteWelcomeMiddleware({required int priority}) : super(priority: priority);
 
   @override
   RouteSettings? redirect(String? route) {

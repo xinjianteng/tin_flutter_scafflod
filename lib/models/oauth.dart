@@ -1,52 +1,24 @@
-// 登录返回
-class Oauth {
-  String? access_token;
-  String? token_type;
-  String? refresh_token;
-  int? expires_in;
-  String? scope;
-  String? mobile;
-  String? license;
-  bool? active;
-  String? user_id;
-  String? username;
+/// 模拟的 OAuth 数据模型。
+class ExampleOauth {
+  String? accessToken;
+  String? userId;
+  String? userName;
 
-  Oauth({
-    this.access_token,
-    this.token_type,
-    this.refresh_token,
-    this.expires_in,
-    this.scope,
-    this.mobile,
-    this.license,
-    this.active,
-    this.user_id,
-    this.username,
+  ExampleOauth({
+    this.accessToken,
+    this.userId,
+    this.userName,
   });
 
-  factory Oauth.fromJson(Map<String, dynamic> json) => Oauth(
-        access_token: json["access_token"],
-        token_type: json["token_type"],
-        refresh_token: json["refresh_token"],
-        expires_in: json["expires_in"],
-        scope: json["scope"],
-        mobile: json["mobile"],
-        license: json["license"],
-        active: json["active"],
-        user_id: json["user_id"],
-        username: json["username"],
+  factory ExampleOauth.fromJson(Map<String, dynamic> json) => ExampleOauth(
+        accessToken: json['access_token'],
+        userId: json['user_id'] ?? json['example_user_id'],
+        userName: json['user_name'] ?? json['example_user_name'],
       );
 
   Map<String, dynamic> toJson() => {
-        "access_token": access_token,
-        "token_type": token_type,
-        "refresh_token": refresh_token,
-        "expires_in": expires_in,
-        "scope": scope,
-        "mobile": mobile,
-        "license": license,
-        "active": active,
-        "user_id": user_id,
-        "username": username,
+        'access_token': accessToken,
+        'user_id': userId,
+        'user_name': userName,
       };
 }

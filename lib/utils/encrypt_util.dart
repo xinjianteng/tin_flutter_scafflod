@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:encrypt/encrypt.dart' as encrypt;
-import 'package:get/get.dart';
 
 /// 加密工具类：提供常用的 MD5 和 AES 示例实现。
 class EncryptUtils {
@@ -16,15 +15,12 @@ class EncryptUtils {
 
   /// AES CBC 加密，返回 base64 编码。
   static String encryptAES(String content, String keyStr, String ivStr) {
-    Get.log('AES加密前的文本:$content');
     final key = encrypt.Key.fromUtf8(keyStr);
     final iv = encrypt.IV.fromUtf8(ivStr);
     final encrypter =
         encrypt.Encrypter(encrypt.AES(key, mode: encrypt.AESMode.cbc));
     final encrypted = encrypter.encrypt(content, iv: iv);
-    final encryptStr = encrypted.base64;
-    Get.log('AES加密后的文本:$encryptStr');
-    return encryptStr;
+    return encrypted.base64;
   }
 
   /// AES CBC 解密，返回明文。

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/values/values.dart';
+import 'package:tin_flutter_scafflod/values/values.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import '/models/oauth.dart';
-import '/routers/routes.dart';
-import '/service/oauth_service.dart';
+import 'package:tin_flutter_scafflod/models/oauth.dart';
+import 'package:tin_flutter_scafflod/routers/routes.dart';
+import 'package:tin_flutter_scafflod/service/oauth_service.dart';
 
 import 'login_state.dart';
 

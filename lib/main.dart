@@ -1,5 +1,6 @@
 // 应用入口：绑定全局依赖、刷新配置与路由。
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -9,7 +10,6 @@ import 'init_app.dart';
 import 'routers/routes.dart';
 import 'service/oauth_service.dart';
 import 'utils/logger.dart';
-import 'utils/prefs_util.dart';
 import 'values/values.dart';
 
 OauthService get oauthService => Get.find<OauthService>();
@@ -56,18 +56,12 @@ class MyApp extends StatelessWidget {
           color: AppColors.primary,
           debugShowCheckedModeBanner: false,
           title: AppStrings.appName,
-          initialBinding: BindingsBuilder(() {
-            Get.putAsync<OauthService>(() async {
-              await PrefsUtil.ensureInitialized();
-              return OauthService();
-            }, permanent: true);
-          }),
           initialRoute: AppRoutes.welcome,
           getPages: AppPages.routes,
           unknownRoute: AppPages.unknownRoute,
           builder: FlutterSmartDialog.init(),
           navigatorObservers: [AppPages.observer, FlutterSmartDialog.observer],
-          enableLog: true,
+          enableLog: kDebugMode,
           logWriterCallback: (String text, {bool isError = false}) {
             Logger().log(text, isError: isError);
           },

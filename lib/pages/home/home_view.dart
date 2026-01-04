@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/values/values.dart';
+import 'package:tin_flutter_scafflod/values/values.dart';
 
 import 'home_logic.dart';
 import 'home_state.dart';

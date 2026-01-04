@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/pages/pages.dart';
-import '/values/values.dart';
+import 'package:tin_flutter_scafflod/pages/pages.dart';
+import 'package:tin_flutter_scafflod/values/values.dart';
 
 class ApplicationState {
   final RxInt currentIndex = 0.obs;

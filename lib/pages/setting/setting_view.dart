@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/routers/routes.dart';
-import '/utils/prefs_util.dart';
-import '/values/values.dart';
+import 'package:tin_flutter_scafflod/routers/routes.dart';
+import 'package:tin_flutter_scafflod/utils/prefs_util.dart';
+import 'package:tin_flutter_scafflod/values/values.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});

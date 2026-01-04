@@ -1,17 +1,19 @@
 import 'package:get/get.dart';
-import '/api/api_config.dart';
-import '/api/api_response.dart';
-import '/service/oauth_service.dart';
-import '/utils/logger.dart';
+import 'package:tin_flutter_scafflod/api/api_config.dart';
+import 'package:tin_flutter_scafflod/api/api_response.dart';
+import 'package:tin_flutter_scafflod/service/oauth_service.dart';
+import 'package:tin_flutter_scafflod/utils/logger.dart';
 
 /// 基于 GetConnect 的简易客户端：负责 Token 注入、日志与错误转换。
 class ApiClient extends GetConnect {
   ApiClient() {
+    final timeoutMs = ApiConfig.connectTimeoutMs > ApiConfig.receiveTimeoutMs
+        ? ApiConfig.connectTimeoutMs
+        : ApiConfig.receiveTimeoutMs;
     httpClient
       ..baseUrl = ApiConfig.baseUrl
-      ..timeout = const Duration(milliseconds: ApiConfig.connectTimeoutMs)
       ..maxAuthRetries = 0
-      ..timeout = const Duration(milliseconds: ApiConfig.receiveTimeoutMs)
+      ..timeout = Duration(milliseconds: timeoutMs)
       ..addRequestModifier<Object?>((request) {
         final token = _token;
         if (token != null && token.isNotEmpty) {

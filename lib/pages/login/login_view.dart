@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/service/oauth_service.dart';
-import '/values/values.dart';
+import 'package:tin_flutter_scafflod/service/oauth_service.dart';
+import 'package:tin_flutter_scafflod/values/values.dart';
 
 import 'login_logic.dart';
 

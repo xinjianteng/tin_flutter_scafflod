@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/routers/routes.dart';
-import '/values/values.dart';
+import 'package:tin_flutter_scafflod/routers/routes.dart';
+import 'package:tin_flutter_scafflod/values/values.dart';
 
 class NotFoundPage extends StatelessWidget {
   const NotFoundPage({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/utils/platform_util.dart';
-import '/values/strings.dart';
+import 'package:tin_flutter_scafflod/utils/platform_util.dart';
+import 'package:tin_flutter_scafflod/values/strings.dart';
 
 class HomeAction {
   const HomeAction({

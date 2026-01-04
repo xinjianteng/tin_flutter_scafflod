@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '/values/values.dart';
+import 'package:tin_flutter_scafflod/values/values.dart';
 
 class WelcomeState {
   WelcomeState();

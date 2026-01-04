@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,22 +10,19 @@ class PrefsUtil {
 
   late SharedPreferences _prefs;
   bool _initialized = false;
-  final Completer<void> _initializationCompleter = Completer<void>();
+  Future<void>? _initFuture;
 
   /// 确保 SharedPreferences 已初始化。
-  static Future<void> ensureInitialized() async {
-    if (_instance._initialized) return _instance._initializationCompleter.future;
-    return _instance._init();
-  }
+  static Future<void> ensureInitialized() =>
+      _instance._initFuture ??= _instance._init();
 
   Future<void> _init() async {
     try {
       _prefs = await SharedPreferences.getInstance();
       _saveBeginDate();
       _initialized = true;
-      _initializationCompleter.complete();
     } catch (e, stack) {
-      _initializationCompleter.completeError(e, stack);
+      _initFuture = null;
       rethrow;
     }
   }

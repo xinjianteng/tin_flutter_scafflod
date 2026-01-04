@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/pages/application/application_logic.dart';
-import '/pages/application/application_state.dart';
-import '/values/values.dart';
+import 'package:tin_flutter_scafflod/pages/application/application_logic.dart';
+import 'package:tin_flutter_scafflod/pages/application/application_state.dart';
+import 'package:tin_flutter_scafflod/values/values.dart';
 
 class ApplicationPage extends StatelessWidget {
   const ApplicationPage({super.key});

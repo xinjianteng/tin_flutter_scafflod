@@ -1,4 +1,5 @@
-import 'dart:io';
+import 'dart:developer' as developer;
+import 'package:flutter/foundation.dart';
 
 /// 日志等级。
 enum LogLevel { debug, info, warn, error }
@@ -37,16 +38,14 @@ class Logger {
         '[$timestamp] [${_levelLabel(effectiveLevel)}] [$tag] $message';
 
     if (logToConsole) {
-      if (effectiveLevel == LogLevel.error) {
-        stderr.writeln(record);
-      } else {
-        stdout.writeln(record);
-      }
+      debugPrint(record);
     }
 
-    if (logToFile) {
-      _writeToFile(record);
-    }
+    developer.log(
+      record,
+      name: tag,
+      level: _developerLevel(effectiveLevel),
+    );
   }
 
   /// 便捷方法：调试
@@ -67,6 +66,12 @@ class Logger {
 
   bool _shouldLog(LogLevel level) => level.index >= minLevel.index;
   String _levelLabel(LogLevel level) => level.name.toUpperCase();
+  int _developerLevel(LogLevel level) => switch (level) {
+        LogLevel.debug => 500,
+        LogLevel.info => 800,
+        LogLevel.warn => 900,
+        LogLevel.error => 1000,
+      };
 
   /// 当前时间戳字符串
   String _now() {
@@ -78,11 +83,9 @@ class Logger {
     return '${now.toIso8601String().split("T").first} $h:$m:$s.$ms';
   }
 
-  /// 追加写入日志文件（失败时静默忽略）
-  Future<void> _writeToFile(String record) async {
-    try {
-      final file = File(logFilePath);
-      await file.writeAsString('$record\n', mode: FileMode.append, flush: true);
-    } catch (_) {}
+  void disableFileLoggingOnWeb() {
+    if (kIsWeb) {
+      logToFile = false;
+    }
   }
 }

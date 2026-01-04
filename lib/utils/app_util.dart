@@ -12,7 +12,7 @@ class AppUtil {
   ///
   /// 获取时间戳，不传值代表获取当前时间戳。
   static String getTime([DateTime? time]) {
-    return DateTime.now().millisecondsSinceEpoch.toString();
+    return (time ?? DateTime.now()).millisecondsSinceEpoch.toString();
   }
 
   /// 生成一个随机的nonce字符串。
@@ -25,13 +25,13 @@ class AppUtil {
   ///
   /// 返回生成的随机字符串。
   static String getNonce() {
-    var length = nonceSet.length;
-    var str = "";
-    // 循环生成16位随机字符
+    final length = nonceSet.length;
+    final buffer = StringBuffer();
+    final random = Random();
     for (var i = 0; i < 16; i++) {
-      str = str + nonceSet[Random().nextInt(length)];
+      buffer.write(nonceSet[random.nextInt(length)]);
     }
-    return str;
+    return buffer.toString();
   }
 
   /// 在外部浏览器中打开指定URL。

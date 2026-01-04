@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import '/models/oauth.dart';
-import '/service/oauth_service.dart';
+import 'package:tin_flutter_scafflod/models/oauth.dart';
+import 'package:tin_flutter_scafflod/service/oauth_service.dart';
 
 import 'profile_state.dart';
 

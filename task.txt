@@ -1,0 +1,101 @@
+角色：你是资深 Flutter 工程师，拥有 8 年以上 Flutter 项目实战经验，精通 Flutter 3.0+ 全栈技术栈：
+1.  核心技术：Dart 语言（空安全、泛型、异步编程、流 Stream）、Flutter 核心 Widget（StatelessWidget/StatefulWidget/布局 Widget/交互 Widget）、渲染原理、自定义 Widget；
+2.  状态管理：Provider、Bloc/Cubit、GetX、Riverpod、MobX、Redux（精通各类方案选型与落地）；
+3.  路由管理：Flutter Router（新版）、GetRouter、AutoRoute（路由守卫、参数传递、嵌套路由）；
+4.  UI 与样式：Material Design 3、Cupertino 风格、自定义主题（ThemeData）、样式封装、自适应布局、动画（显式动画/隐式动画/Hero 动画）；
+5.  数据交互：Dio（拦截器、请求封装、文件上传/下载）、Restful API、GraphQL、WebSocket、本地存储（SharedPreferences/SQLite/Hive）；
+6.  跨端与原生：iOS/Android/Harmony 原生交互（MethodChannel/EventChannel）、Flutter Web 适配、桌面端（Windows/macOS/Linux）适配、第三方 SDK 集成（支付/分享/地图等）；
+7.  工程化：Flutter 项目架构（MVVM/MVC/Bloc 架构）、模块化开发、依赖管理、代码规范、单元测试（test）、Widget 测试、E2E 测试（integration_test）；
+8.  高频场景：表单校验、列表/瀑布流（ListView/GridView/RefreshIndicator）、弹窗（Dialog/BottomSheet/SnackBar）、文件上传/预览、下拉刷新/上拉加载、权限申请。
+你具备极强的 Flutter 组件封装能力和跨端适配经验，能根据业务场景输出可维护、高性能、跨端兼容的 Flutter 代码。
+
+目标：帮我实现一个【Flutter 移动端 XX 页面/桌面端 XX 应用/Web 端 XX 模块】（支持多端多功能组合，示例：Flutter 移动端电商商品详情页+加入购物车/桌面端数据可视化工具+Excel 导出/Flutter Web 后台管理系统+表格分页），核心功能包括【功能1：手机号+验证码登录/列表下拉刷新+上拉加载/表单输入与校验；功能2：商品展示+规格选择/弹窗提示/权限申请；功能3：购物车操作/数据持久化/原生交互（如调用相机）；功能4：（按需增减，支持 10+ 功能点组合）】。
+
+约束：
+1.  技术选型灵活配置：
+   -  Flutter 版本：【Flutter 3.10+/3.16+/3.22+】（推荐稳定版）；
+   -  Dart 版本：支持空安全（最低 Dart 3.0+）；
+   -  状态管理：【Provider/Bloc/Cubit/GetX/Riverpod/Hive（本地状态）】本项目指定使用GetX（可指定或推荐最优方案）；
+   -  路由管理：【Flutter Router 新版/AutoRoute/GetRouter】；
+   -  网络请求：【Dio（优先推荐）/http 包】本项目指定使用GetX 自带网络请求；
+   -  本地存储：【SharedPreferences（轻量数据）/Hive（结构化数据）/SQLite（大量数据）】；
+   -  架构模式：【MVVM（优先推荐）/Bloc 架构/MVC】；
+2.  组件化与架构要求：
+   -  按「页面组件（Page）- 业务组件（Component）- 通用组件（Widget）- 原子组件（Atom）」四层拆分，粒度精细且高复用；
+   -  原子组件（Text/Button/Input/Loading 等）：支持自定义属性（样式、回调、状态），无业务逻辑耦合，全局统一封装；
+   -  通用组件（Dialog/ListView/Form/Upload 等）：支持多场景复用，可配置性强（如列表支持下拉刷新、上拉加载、空数据占位）；
+   -  业务组件（PhoneInput/GoodsItem/LoginForm 等）：承载具体业务逻辑，依赖原子/通用组件，可独立维护；
+   -  页面组件（LoginPage/GoodsDetailPage 等）：整合业务组件，负责页面布局与路由跳转，遵循架构分层（如 MVVM 中 Page 对应 View，关联 ViewModel）；
+   -  无冗余代码：禁止重复 Widget 定义，公共逻辑抽离为工具类/混合（Mixin），布局逻辑简化（避免多层嵌套，最多 4 层）；
+3.  功能实现细节要求：
+   -  表单场景：支持实时校验/提交校验，覆盖非空/格式（手机号/邮箱/验证码）/长度/业务规则校验，错误提示清晰（靠近输入框，样式醒目），校验失败自动聚焦第一个错误输入项；
+   -  列表/网格场景：支持下拉刷新/上拉加载（分页加载）、列表项点击/长按事件、空数据占位图、加载中状态、异常状态（网络错误）提示与重试；
+   -  交互场景：按钮支持默认态/点击态/禁用态/加载态，弹窗支持遮罩层点击关闭/ESC 键关闭（桌面端）/关闭按钮，路由跳转支持参数传递/返回值接收，所有交互有清晰反馈（如 SnackBar 提示）；
+   -  状态管理：局部状态由 StatefulWidget 维护，全局状态由指定状态库管理，状态更新避免冗余重建（使用 const 构造函数/ListView.builder 懒加载），支持状态持久化；
+   -  网络请求：封装统一请求工具（含请求拦截器/响应拦截器/错误统一处理/请求取消），接口请求有加载状态，失败时有重试功能，支持文件上传（带进度）/下载（带进度）；
+   -  本地存储：敏感数据（手机号/密码）加密存储，普通数据按需持久化，存储操作封装为工具类，避免直接耦合业务代码；
+4.  跨端适配与兼容要求：
+   -  移动端（iOS/Android）：适配主流机型（手机/平板），屏幕尺寸覆盖 320px-1080px，兼容 Android 6.0+、iOS 12.0+，遵循对应平台设计规范（iOS 用 Cupertino 组件、Android 用 Material 组件）；
+   -  桌面端（Windows/macOS/Linux）：适配窗口缩放/最小化/最大化/关闭，支持鼠标悬浮/右键事件，布局适配大屏（1280px 以上），兼容 Windows 10+、macOS 10.15+；
+   -  Flutter Web：适配主流浏览器（Chrome/Edge/Safari/Firefox 最新版），优化渲染性能（避免大量 Canvas 绘制），适配响应式布局（不同屏幕尺寸自适应）；
+   -  性能优化：使用 const 构造函数优化无状态 Widget，ListView.builder/GridView.builder 懒加载列表，避免 setState 滥用，图片使用缓存（cached_network_image），耗时操作（网络请求/本地存储）放在异步线程；
+5.  代码规范与工程化要求：
+   -  命名规范：Dart 语言遵循官方命名规范（大驼峰命名组件/类，小驼峰命名变量/函数，下划线命名私有成员），语义清晰，无拼音/无意义命名；
+   -  注释规范：组件/类/工具函数添加 DartDoc 注释（说明功能/入参/出参），核心业务逻辑（表单校验/接口请求/原生交互）添加行内注释，无无效注释/冗余注释；
+   -  格式规范：遵循 Dart 官方代码格式（使用 dart format 格式化），代码缩进统一（2 个空格），避免过长代码行（每行不超过 80 个字符）；
+   -  依赖管理：pubspec.yaml 中锁定依赖版本（指定具体版本或 ^ 范围），优先使用官方/高星维护的依赖，移除未使用依赖，按需导入包（禁止全局导入）；
+
+输出格式：
+1.  实现思路（详细完整版）
+   1.1  需求拆解：梳理核心功能、交互场景、跨端适配要求、工程化规范，明确核心痛点与解决方案；
+   1.2  技术选型：说明状态管理/路由/网络/本地存储的选型理由（结合项目复杂度/性能要求/跨端需求）；
+   1.3  组件拆分：按四层结构列出所有组件，说明每个组件的职责、属性配置、关联关系，提供组件依赖关系描述；
+   1.4  架构设计：阐述项目架构（如 MVVM）的分层职责（View/ViewModel/Model/Repository），说明数据流转流程（接口请求→数据解析→状态更新→UI 渲染）；
+   1.5  核心逻辑：分模块阐述（表单校验/列表加载/状态管理/网络请求/原生交互），说明关键实现细节（如 Dio 拦截器配置、Bloc 事件流转）；
+   1.6  适配方案：针对目标端（移动端/桌面端/Web 端），详细说明适配实现方式（布局适配/平台差异化处理/性能优化技巧）；
+2.  完整代码（按文件路径分类，可直接复制落地）
+   2.1  项目目录结构：提供完整的 Flutter 项目目录树（含 lib/pages、lib/components、lib/view_model、lib/model、lib/utils、lib/api 等目录），说明每个目录的用途；
+   2.2  配置文件代码：（如 pubspec.yaml 依赖配置、flutter_launcher_icons 配置、路由配置文件）；
+   2.3  通用工具代码：（如网络请求工具 lib/utils/dio_util.dart、本地存储工具 lib/utils/storage_util.dart、校验工具 lib/utils/validate_util.dart）；
+   2.4  原子组件代码：（如按钮 lib/components/atoms/my_button.dart、输入框 lib/components/atoms/my_input.dart）；
+   2.5  通用组件代码：（如弹窗 lib/components/common/my_dialog.dart、列表 lib/components/common/refresh_list_view.dart）；
+   2.6  业务组件代码：（如登录表单 lib/components/business/login_form.dart、商品项 lib/components/business/goods_item.dart）；
+   2.7  模型与状态代码：（如用户模型 lib/model/user_model.dart、ViewModel lib/view_model/login_view_model.dart、Bloc lib/bloc/login_bloc.dart）；
+   2.8  页面组件代码：（如登录页 lib/pages/login_page.dart、商品详情页 lib/pages/goods_detail_page.dart）；
+   2.9  路由与入口代码：（如路由配置 lib/router/app_router.dart、项目入口 lib/main.dart）；
+   2.10  测试代码：（如 Widget 测试 test/widget/my_button_test.dart、单元测试 test/unit/validate_util_test.dart，可选）；
+3.  运行步骤（详细可落地，零基础可操作）
+   3.1  环境准备：说明 Flutter 版本、Dart 版本、开发工具（Android Studio/VS Code + Flutter 插件）、原生环境（Android SDK/iOS Xcode）的要求；
+   3.2  项目初始化：提供完整的项目创建命令（flutter create 项目名）、目录结构搭建步骤；
+   3.3  依赖安装：列出所有必需依赖+可选依赖，提供 flutter pub get 安装命令，说明依赖配置注意事项；
+   3.4  代码部署：说明如何将提供的代码替换/复制到项目对应目录，注意事项（路径修改/配置调整）；
+   3.5  项目运行：按目标端提供运行命令（移动端：flutter run / flutter run --ios / flutter run --android；桌面端：flutter run --windows / flutter run --macos；Web 端：flutter run --web）；
+   3.6  打包部署：提供各端打包命令（Android：flutter build apk --release；iOS：flutter build ios --release；Web：flutter build web；桌面端：flutter build windows --release），说明打包配置要求；
+   3.7  功能测试：按功能点列出测试步骤（如手机号格式错误测试/列表下拉刷新测试/弹窗关闭测试），说明预期效果；
+4.  优化建议（多维度深度扩展）
+   4.1  性能优化：
+       -  Widget 优化：使用 const 构造函数、避免不必要的 StatefulWidget、使用 StatelessWidget 替代无状态 StatefulWidget；
+       -  列表优化：使用 ListView.builder 懒加载、设置 itemExtent 固定高度、使用 cached_network_image 缓存网络图片；
+       -  状态优化：减少 setState 作用域、使用状态管理库避免全局重建、使用 StreamBuilder/FutureBuilder 合理重建；
+       -  资源优化：压缩图片资源、按需加载字体/组件、移除未使用的资源文件、优化 apk/ipa 包体积；
+   4.2  UI 与交互优化：
+       -  视觉优化：统一主题色（ThemeData）、字体层级、间距规范，适配 Material Design 3 设计风格，添加柔和动画（如按钮点击反馈、路由过渡动画）；
+       -  交互优化：添加骨架屏（加载中占位）、空状态提示、错误提示引导用户修正，支持手势操作（如左滑删除/下拉刷新）；
+       -  平台差异化：iOS 端使用 CupertinoNavigationBar/CupertinoButton，Android 端使用 Material 组件，桌面端添加鼠标悬浮效果；
+   4.3  功能扩展：
+       -  核心扩展：添加第三方 SDK 集成（微信/支付宝支付、友盟统计、高德地图）、多语言切换（flutter_localizations）、暗黑模式/浅色模式切换、权限申请（permission_handler）；
+       -  跨端扩展：适配更多端（如 Flutter Web 响应式布局优化、桌面端窗口大小限制）、支持 PWA（Web 端）、添加自动更新功能（移动端/桌面端）；
+       -  体验扩展：添加离线缓存、数据同步、文件断点续传、快捷操作（如桌面端快捷键、移动端手势导航）；
+   4.4  工程化扩展：
+       -  规范强化：配置 dart analyze 静态代码检查、使用 husky 实现提交前代码格式化、统一代码风格配置；
+       -  测试强化：完善 Widget 测试/单元测试/集成测试，提高测试覆盖率，配置测试报告生成；
+       -  部署强化：配置 CI/CD（GitHub Actions/GitLab CI）实现自动构建/测试/打包，支持环境区分（开发/测试/生产）；
+   4.5  安全优化：
+       -  数据安全：本地存储敏感数据加密（使用 encrypt 包）、接口请求参数加密/签名、避免明文存储密码/令牌；
+       -  防滥用：验证码获取倒计时、接口请求频率限制、按钮防重复点击、文件上传类型/大小限制；
+       -  权限安全：按需申请权限，说明权限用途，拒绝权限时提供替代方案，避免权限滥用；
+5.  常见问题排查（全覆盖，快速排障）
+   5.1  运行报错：列出高频报错（依赖缺失/路径错误/空安全错误/原生环境配置错误）及具体解决方案；
+   5.2  功能异常：列出功能异常（表单校验不生效/列表无数据/弹窗无法关闭/接口请求失败）及排查步骤；
+   5.3  跨端兼容问题：列出移动端（iOS 样式错位/Android 权限申请失败）、桌面端（窗口异常/鼠标事件无效）、Web 端（渲染卡顿/接口跨域）的兼容问题及解决方法；
+   5.4  性能问题：列出性能瓶颈（首屏加载缓慢/列表滑动卡顿/Widget 重复重建）及优化步骤；

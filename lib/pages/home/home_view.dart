@@ -1,3 +1,4 @@
+/// 使用方法：const HomePage();
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tin_flutter_scafflod/values/values.dart';
@@ -31,7 +32,7 @@ class HomePage extends StatelessWidget {
               ...state.quickActions.map(
                 (item) => _ActionCard(
                   action: item,
-                  onTap: logic.mockFetch,
+                  onTap: () => Get.toNamed(item.routeName),
                 ),
               ),
               const SizedBox(height: 20),

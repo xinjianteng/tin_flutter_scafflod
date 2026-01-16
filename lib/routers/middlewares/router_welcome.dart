@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../main.dart';
+import '../../service/oauth_service.dart';
 import '../../utils/utils.dart';
 import '../routes.dart';
 
@@ -15,7 +15,12 @@ class RouteWelcomeMiddleware extends GetMiddleware {
       return null;
     }
 
-    if (oauthService.isLogin.value) {
+    if (!Get.isRegistered<OauthService>()) {
+      return null;
+    }
+    final authService = Get.find<OauthService>();
+
+    if (authService.isLogin.value) {
       return const RouteSettings(name: AppRoutes.application);
     } else {
       return const RouteSettings(name: AppRoutes.login);

@@ -84,4 +84,19 @@ class PrefsUtil {
     if (beginDateStr == null) return null;
     return DateTime.tryParse(beginDateStr);
   }
+
+  String? getString(String key) {
+    if (!_initialized) return null;
+    return _prefs.getString(key);
+  }
+
+  Future<bool> setString(String key, String value) async {
+    await ensureInitialized();
+    return _prefs.setString(key, value);
+  }
+
+  Future<bool> remove(String key) async {
+    await ensureInitialized();
+    return _prefs.remove(key);
+  }
 }

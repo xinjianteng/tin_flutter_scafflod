@@ -1,9 +1,21 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// 工具类，提供应用程序相关的实用功能。
 class AppUtil {
+
+
+  static bool isMobile() {
+    final isMobile = !kIsWeb &&
+        (defaultTargetPlatform == TargetPlatform.android ||
+            defaultTargetPlatform == TargetPlatform.iOS||
+            defaultTargetPlatform == TargetPlatform.ohos
+        );
+    return isMobile;
+  }
+
   /// 获取当前时间的毫秒级时间戳。
   ///
   /// [time] 可选参数，指定的时间，若不提供则使用当前时间。

@@ -1,7 +1,10 @@
-import 'package:tin_flutter_scafflod/service/oauth_service.dart';
+import 'package:get/get.dart';
+
+import '../../service/oauth_service.dart';
 
 class ProfileState {
-  final OauthService authService;
-
   ProfileState(this.authService);
+
+  final OauthService authService;
+  final RxList<String> badges = <String>[].obs;
 }

@@ -1,5 +1,7 @@
+/// 使用方法：final state = HomeState();
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tin_flutter_scafflod/routers/routes.dart';
 import 'package:tin_flutter_scafflod/utils/platform_util.dart';
 import 'package:tin_flutter_scafflod/values/strings.dart';
 
@@ -8,11 +10,13 @@ class HomeAction {
     required this.title,
     required this.description,
     required this.icon,
+    required this.routeName,
   });
 
   final String title;
   final String description;
   final IconData icon;
+  final String routeName;
 }
 
 class PlatformGuide {
@@ -33,21 +37,25 @@ class HomeState {
       title: AppStrings.actionRouting,
       description: AppStrings.actionRoutingDesc,
       icon: Icons.route_outlined,
+      routeName: AppRoutes.setting,
     ),
     HomeAction(
       title: AppStrings.actionState,
       description: AppStrings.actionStateDesc,
       icon: Icons.verified_user_outlined,
+      routeName: AppRoutes.profile,
     ),
     HomeAction(
       title: AppStrings.actionTheming,
       description: AppStrings.actionThemingDesc,
       icon: Icons.palette_outlined,
+      routeName: AppRoutes.aboutApp,
     ),
     HomeAction(
       title: AppStrings.actionSamples,
       description: AppStrings.actionSamplesDesc,
       icon: Icons.extension_outlined,
+      routeName: AppRoutes.listDemo,
     ),
   ];
 

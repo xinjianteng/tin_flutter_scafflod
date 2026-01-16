@@ -41,19 +41,37 @@ class AppStrings {
   static const String searchEmpty = '这里展示搜索结果列表';
 
   static const String loginTitle = '快速登录示例';
-  static const String loginTip =
-      '将这里替换为真实的登录表单逻辑，当前按钮会直接写入模拟 OAuth。';
-  static const String mockLogin = '模拟登录';
+  static const String loginTip = '使用手机号验证码快速登录，接口为模拟实现。';
+  static const String loginSendCode = '获取验证码';
+  static const String loginCountdown = '验证码已发送';
 
   static const String profileUnknownUser = '未登录用户';
   static const String profileLoginState = '当前状态';
+  static const String profileDetail = '个人信息';
 
   static const String settingFollowSystem = '跟随系统深色模式';
   static const String settingClearMock = '清除模拟登录数据';
   static const String settingAbout = '关于';
   static const String settingAboutSubTitle = '查看版本与作者信息';
+  static const String settingFeedback = '问题反馈';
+  static const String settingListDemo = '列表刷新示例';
+  static const String settingProfileDetail = '个人信息';
   static const String settingPersonalizeTip =
       '把你的个性化设置项添加在这里，比如主题、通知、缓存清理等。';
+
+  static const String listTitle = '列表刷新';
+  static const String listEmpty = '暂无列表数据';
+  static const String listError = '列表加载失败';
+
+  static const String feedbackTitle = '问题反馈';
+  static const String feedbackTip = '我们会尽快处理你的反馈';
+
+  static const String searchHistory = '最近搜索';
+  static const String searchResult = '搜索结果';
+
+  static const String aboutWebsite = '官方网站';
+  static const String aboutAgreement = '用户协议';
+  static const String aboutPrivacy = '隐私政策';
 
   static const String notFoundTitle = '页面不存在';
   static const String notFoundMessage = '没找到对应的页面';

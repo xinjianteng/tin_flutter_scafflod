@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: ^3.6.2
 
 dependencies:
   flutter:
@@ -19,55 +19,70 @@ dependencies:
   cached_network_image: ^3.4.1
 
   # 状态管理 & 路由
-  get:
+  get: # GetX 状态管理框架
     git:
-      url: "https://gitcode.com/openharmony-sig/fluttertpc_get.git"
+      url: https://gitcode.com/openharmony-sig/fluttertpc_get.git
+      ref: br_4.7.2_ohos
 
   # 本地存储（全端/部分端）
-  shared_preferences:
+  shared_preferences: # 本地轻量级数据存储
     git:
-      url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
-      path: "packages/shared_preferences/shared_preferences"
-      ref: "br_shared_preferences-v2.3.2_ohos"
-  path_provider: ^2.1.1
+      url: https://gitcode.com/openharmony-sig/flutter_packages.git
+      path: packages/shared_preferences/shared_preferences
+      ref: br_shared_preferences-v2.5.3_ohos
+
+  path_provider:
+    git:
+      url: https://gitcode.com/openharmony-tpc/flutter_packages.git
+      path: packages/path_provider/path_provider
+      ref: br_path_provider-v2.1.5_ohos
 
   # 加解密（纯 Dart）
   crypto: ^3.0.6
   encrypt: ^5.0.1
 
   # 按需启用的原生能力（移动/桌面可用，Web 需要移除）
-  permission_handler:
+  permission_handler: # 权限申请管理
     git:
-      url: "https://gitcode.com/openharmony-sig/flutter_permission_handler.git"
-      path: "permission_handler"
-      ref: "br_permission_handler_v11.3.1_ohos"
-  sqflite:
+      url: https://gitcode.com/openharmony-sig/flutter_permission_handler.git
+      path: permission_handler
+      ref: br_permission_handler_v11.3.1_ohos
+
+  sqflite:  # 这个插件跟audio_session存在兼容性问题，咱是使用pub线上版本
     git:
-      url: "https://gitcode.com/openharmony-sig/flutter_sqflite.git"
-      path: "sqflite"
+      url: https://gitcode.com/openharmony-sig/flutter_sqflite.git
+      path: sqflite
+
   sqflite_common:
     git:
-      url: "https://gitcode.com/openharmony-sig/flutter_sqflite.git"
-      path: "sqflite_common"
+      url: https://gitcode.com/openharmony-sig/flutter_sqflite.git
+      path: sqflite_common
+
   sqflite_common_ffi:
     git:
-      url: "https://gitcode.com/openharmony-sig/flutter_sqflite.git"
-      path: "sqflite_common_ffi"
+      url: https://gitcode.com/openharmony-sig/flutter_sqflite.git
+      path: sqflite_common_ffi
 
   # 其他
   url_launcher: ^6.3.1
 
 dependency_overrides:
   win32: ^5.5.1
-  sqflite:
+  sqflite: # 这个插件跟audio_session存在兼容性问题，咱是使用pub线上版本
     git:
-      url: "https://gitcode.com/openharmony-sig/flutter_sqflite.git"
-      path: "sqflite"
+      url: https://gitcode.com/openharmony-sig/flutter_sqflite.git
+      path: sqflite
+
   path_provider:
     git:
-      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
-      path: "packages/path_provider/path_provider"
-      ref: "br_path_provider-v2.1.4_ohos"
+      url: https://gitcode.com/openharmony-sig/flutter_packages.git
+      path: packages/path_provider/path_provider
+
+  shared_preferences:
+    git:
+      url: https://gitcode.com/openharmony-sig/flutter_packages.git
+      path: packages/shared_preferences/shared_preferences
+
 
 dev_dependencies:
   flutter_test:

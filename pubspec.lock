@@ -196,11 +196,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: HEAD
-      resolved-ref: be2738d5711fc351eb51d753db1dfef0cfb38fc0
+      ref: "br_4.7.2_ohos"
+      resolved-ref: daa3b9361ad786388d4ec34e3fd0543a32b63f5c
       url: "https://gitcode.com/openharmony-sig/fluttertpc_get.git"
     source: git
-    version: "4.6.5"
+    version: "5.0.0-release-candidate-9.3.2"
   http:
     dependency: transitive
     description:
@@ -301,11 +301,11 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/path_provider/path_provider"
-      ref: "br_path_provider-v2.1.4_ohos"
-      resolved-ref: "1b74318ae8207ab4d7ecdb8ef163e44e3f35f6c0"
-      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
+      ref: HEAD
+      resolved-ref: "4b714ff0cb8df6a502b66c180272ea4082a7e7c0"
+      url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
     source: git
-    version: "2.1.4"
+    version: "2.1.0"
   path_provider_android:
     dependency: transitive
     description:
@@ -334,11 +334,11 @@ packages:
     dependency: transitive
     description:
       path: "packages/path_provider/path_provider_ohos"
-      ref: "br_path_provider-v2.1.4_ohos"
-      resolved-ref: "1b74318ae8207ab4d7ecdb8ef163e44e3f35f6c0"
-      url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
+      ref: HEAD
+      resolved-ref: "4b714ff0cb8df6a502b66c180272ea4082a7e7c0"
+      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
     source: git
-    version: "2.2.9"
+    version: "2.2.1"
   path_provider_platform_interface:
     dependency: transitive
     description:
@@ -457,11 +457,11 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/shared_preferences/shared_preferences"
-      ref: "br_shared_preferences-v2.3.2_ohos"
-      resolved-ref: "1ee5454619806f3c52b941a73261e103390c9434"
+      ref: HEAD
+      resolved-ref: "4b714ff0cb8df6a502b66c180272ea4082a7e7c0"
       url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
     source: git
-    version: "2.3.2"
+    version: "2.2.0"
   shared_preferences_android:
     dependency: transitive
     description:
@@ -490,11 +490,11 @@ packages:
     dependency: transitive
     description:
       path: "packages/shared_preferences/shared_preferences_ohos"
-      ref: "br_shared_preferences-v2.3.2_ohos"
-      resolved-ref: "1ee5454619806f3c52b941a73261e103390c9434"
-      url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
+      ref: HEAD
+      resolved-ref: "4b714ff0cb8df6a502b66c180272ea4082a7e7c0"
+      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
     source: git
-    version: "2.3.1"
+    version: "2.2.0"
   shared_preferences_platform_interface:
     dependency: transitive
     description:
@@ -736,5 +736,5 @@ packages:
     source: hosted
     version: "1.1.0"
 sdks:
-  dart: ">=3.4.0 <4.0.0"
+  dart: ">=3.6.2 <4.0.0"
   flutter: ">=3.22.0"

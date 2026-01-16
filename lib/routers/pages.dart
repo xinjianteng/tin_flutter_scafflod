@@ -1,3 +1,4 @@
+/// 使用方法：AppPages.routes;
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -42,6 +43,42 @@ class AppPages {
     GetPage(
       name: AppRoutes.profile,
       page: () => const ProfilePage(),
+    ),
+    GetPage(
+      name: AppRoutes.listDemo,
+      page: () => const ListPage(),
+    ),
+    GetPage(
+      name: AppRoutes.feedback,
+      page: () => const FeedbackPage(),
+    ),
+    GetPage(
+      name: AppRoutes.profileDetail,
+      page: () => const ProfileDetailPage(),
+    ),
+    GetPage(
+      name: AppRoutes.appRecommend,
+      page: () => const AppRecommendPage(),
+    ),
+    GetPage(
+      name: AppRoutes.register,
+      page: () => const RegisterPage(),
+      transition: Transition.downToUp,
+    ),
+    GetPage(
+      name: AppRoutes.articleDetail,
+      page: () => const ArticleDetailPage(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.notification,
+      page: () => const NotificationPage(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage(
+      name: AppRoutes.componentShowcase,
+      page: () => const ComponentShowcasePage(),
+      transition: Transition.rightToLeft,
     ),
   ];
 

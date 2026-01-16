@@ -18,4 +18,8 @@ class AppConstants {
   static final RegExp phoneReg = RegExp(r'^1[3-9]\d{9}$');
   static final RegExp emailReg =
       RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+
+  // 存储加密（示例默认值，建议按业务替换）
+  static const String aesKey = 'a1b2c3d4e5f6g7h8';
+  static const String aesIv = 'h8g7f6e5d4c3b2a1';
 }

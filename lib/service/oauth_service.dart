@@ -1,3 +1,4 @@
+/// 使用方法：Get.find<OauthService>().login(oauth);
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -18,9 +19,10 @@ class OauthService extends GetxService {
 
   Future<void> _loadPersistedSession() async {
     try {
-      await PrefsUtil.ensureInitialized();
-      final oauthJson = PrefsUtil().oauth;
-      if (oauthJson.isEmpty) return;
+      final oauthJson = await StorageUtil.getSecureString(
+        StorageUtil.keyOauth,
+      );
+      if (oauthJson == null || oauthJson.isEmpty) return;
 
       oauth.value = ExampleOauth.fromJson(jsonDecode(oauthJson));
       _updateLoginStatus(oauth.value);
@@ -52,7 +54,10 @@ class OauthService extends GetxService {
       user.value = ExampleUser(
         username: oauthNew.userName ?? '示例用户',
       );
-      await PrefsUtil().setOauth(jsonEncode(oauthNew));
+      await StorageUtil.setSecureString(
+        StorageUtil.keyOauth,
+        jsonEncode(oauthNew),
+      );
     } catch (e) {
       Get.log('Error saving OAuth data: $e', isError: true);
     }
@@ -61,7 +66,7 @@ class OauthService extends GetxService {
   Future<void> logout() async {
     try {
       _updateLoginStatus(null);
-      await PrefsUtil().setOauth('');
+      await StorageUtil.remove(StorageUtil.keyOauth);
     } catch (e) {
       Get.log('Error clearing OAuth data: $e', isError: true);
     }

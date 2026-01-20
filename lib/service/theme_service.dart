@@ -18,7 +18,7 @@ class ThemeService extends GetxService {
   }
 
   void _loadTheme() {
-    final saved = PrefsUtil.getString(_themeKey);
+    final saved = PrefsUtil().getString(_themeKey);
     if (saved != null) {
       _themeMode.value = ThemeMode.values.firstWhere(
         (e) => e.name == saved,
@@ -29,7 +29,7 @@ class ThemeService extends GetxService {
 
   void setTheme(ThemeMode mode) {
     _themeMode.value = mode;
-    PrefsUtil.setString(_themeKey, mode.name);
+    PrefsUtil().setString(_themeKey, mode.name);
     Get.changeThemeMode(mode);
   }
 
@@ -48,7 +48,7 @@ class ThemeService extends GetxService {
           surface: Colors.white,
           error: AppColors.error,
         ),
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           elevation: 0,

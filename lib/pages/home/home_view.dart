@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tin_flutter_scafflod/values/values.dart';
 
+import '../../routers/routes.dart';
 import 'home_logic.dart';
 import 'home_state.dart';
 
@@ -26,6 +27,12 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             children: [
               _buildHeader(theme),
+              ListTile(
+                title: const Text('组件展示'),
+                subtitle: const Text('查看所有通用组件案例'),
+                trailing: const Icon(Icons.widgets_outlined),
+                onTap: () => Get.toNamed(AppRoutes.componentShowcase),
+              ),
               const SizedBox(height: 12),
               _buildPlatformCard(theme, state),
               const SizedBox(height: 12),

@@ -153,7 +153,7 @@ class ProfilePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '鲸喜号: $userId',
+                'T号: $userId',
                 style: TextStyle(
                   fontSize: 12.sp,
                   color: AppColors.textSecondary,

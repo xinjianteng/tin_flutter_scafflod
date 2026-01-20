@@ -9,6 +9,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'init_app.dart';
 import 'routers/routes.dart';
 import 'service/oauth_service.dart';
+import 'service/theme_service.dart';
 import 'utils/logger.dart';
 import 'values/values.dart';
 
@@ -24,6 +25,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeService = Get.find<ThemeService>();
+
     return ScreenUtilInit(
       designSize: AppDimens.deviceSize,
       minTextAdapt: true,
@@ -56,6 +59,9 @@ class MyApp extends StatelessWidget {
           color: AppColors.primary,
           debugShowCheckedModeBanner: false,
           title: AppStrings.appName,
+          theme: ThemeService.lightTheme,
+          darkTheme: ThemeService.darkTheme,
+          themeMode: themeService.themeMode,
           initialRoute: AppRoutes.welcome,
           getPages: AppPages.routes,
           unknownRoute: AppPages.unknownRoute,

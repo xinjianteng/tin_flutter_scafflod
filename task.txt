@@ -9,19 +9,19 @@
 8.  高频场景：表单校验、列表/瀑布流（ListView/GridView/RefreshIndicator）、弹窗（Dialog/BottomSheet/SnackBar）、文件上传/预览、下拉刷新/上拉加载、权限申请。
 你具备极强的 Flutter 组件封装能力和跨端适配经验，能根据业务场景输出可维护、高性能、跨端兼容的 Flutter 代码。
 
-目标：帮我实现一个【Flutter 移动端 XX 页面/桌面端 XX 应用/Web 端 XX 模块】（支持多端多功能组合，示例：Flutter 移动端电商商品详情页+加入购物车/桌面端数据可视化工具+Excel 导出/Flutter Web 后台管理系统+表格分页），核心功能包括【功能1：手机号+验证码登录/列表下拉刷新+上拉加载/表单输入与校验；功能2：商品展示+规格选择/弹窗提示/权限申请；功能3：购物车操作/数据持久化/原生交互（如调用相机）；功能4：（按需增减，支持 10+ 功能点组合）】。
+目标：基于我已经写的现有的代码帮我实现一个适合我的Flutter 架构项目，我以后很多项目都会直接服此套架构来开发】。
 
 约束：
 1.  技术选型灵活配置：
-   -  Flutter 版本：【Flutter 3.10+/3.16+/3.22+】（推荐稳定版）；
-   -  Dart 版本：支持空安全（最低 Dart 3.0+）；
-   -  状态管理：【Provider/Bloc/Cubit/GetX/Riverpod/Hive（本地状态）】本项目指定使用GetX（可指定或推荐最优方案）；
-   -  路由管理：【Flutter Router 新版/AutoRoute/GetRouter】；
+   -  Flutter 版本：【Flutter 3.10+/3.16+/3.22+】（直接用本机安装的Flutter版本，本机的Flutter是适配Harmony的定制版）；
+   -  Dart 版本：支持空安全（最低 Dart 3.0+）（直接用本机安装的Flutter版本自带的Dart，本机的Flutter是适配Harmony的定制版）；
+   -  状态管理：【Provider/Bloc/Cubit/GetX/Riverpod/Hive（本地状态）】本项目指定使用GetX；
+   -  路由管理：【Flutter Router 新版/AutoRoute/GetRouter】；根据本项目目前的情况进行适时而动；
    -  网络请求：【Dio（优先推荐）/http 包】本项目指定使用GetX 自带网络请求；
-   -  本地存储：【SharedPreferences（轻量数据）/Hive（结构化数据）/SQLite（大量数据）】；
+   -  本地存储：【SharedPreferences（轻量数据）/Hive（结构化数据）/SQLite（大量数据）】；本项目指定SharedPreferences
    -  架构模式：【MVVM（优先推荐）/Bloc 架构/MVC】；
 2.  组件化与架构要求：
-   -  按「页面组件（Page）- 业务组件（Component）- 通用组件（Widget）- 原子组件（Atom）」四层拆分，粒度精细且高复用；
+   -  按「页面组件（）- 业务组件Page（Component）- 通用组件（Widget）- 原子组件（Atom）」四层拆分，粒度精细且高复用；
    -  原子组件（Text/Button/Input/Loading 等）：支持自定义属性（样式、回调、状态），无业务逻辑耦合，全局统一封装；
    -  通用组件（Dialog/ListView/Form/Upload 等）：支持多场景复用，可配置性强（如列表支持下拉刷新、上拉加载、空数据占位）；
    -  业务组件（PhoneInput/GoodsItem/LoginForm 等）：承载具体业务逻辑，依赖原子/通用组件，可独立维护；
@@ -35,7 +35,7 @@
    -  网络请求：封装统一请求工具（含请求拦截器/响应拦截器/错误统一处理/请求取消），接口请求有加载状态，失败时有重试功能，支持文件上传（带进度）/下载（带进度）；
    -  本地存储：敏感数据（手机号/密码）加密存储，普通数据按需持久化，存储操作封装为工具类，避免直接耦合业务代码；
 4.  跨端适配与兼容要求：
-   -  移动端（iOS/Android）：适配主流机型（手机/平板），屏幕尺寸覆盖 320px-1080px，兼容 Android 6.0+、iOS 12.0+，遵循对应平台设计规范（iOS 用 Cupertino 组件、Android 用 Material 组件）；
+   -  移动端（iOS/Android/Harmony）：适配主流机型（手机/平板），屏幕尺寸覆盖 320px-1080px，兼容 Android 6.0+、iOS 12.0+，遵循对应平台设计规范（iOS 用 Cupertino 组件、Android 用 Material 组件）；
    -  桌面端（Windows/macOS/Linux）：适配窗口缩放/最小化/最大化/关闭，支持鼠标悬浮/右键事件，布局适配大屏（1280px 以上），兼容 Windows 10+、macOS 10.15+；
    -  Flutter Web：适配主流浏览器（Chrome/Edge/Safari/Firefox 最新版），优化渲染性能（避免大量 Canvas 绘制），适配响应式布局（不同屏幕尺寸自适应）；
    -  性能优化：使用 const 构造函数优化无状态 Widget，ListView.builder/GridView.builder 懒加载列表，避免 setState 滥用，图片使用缓存（cached_network_image），耗时操作（网络请求/本地存储）放在异步线程；
@@ -65,7 +65,7 @@
    2.9  路由与入口代码：（如路由配置 lib/router/app_router.dart、项目入口 lib/main.dart）；
    2.10  测试代码：（如 Widget 测试 test/widget/my_button_test.dart、单元测试 test/unit/validate_util_test.dart，可选）；
 3.  运行步骤（详细可落地，零基础可操作）
-   3.1  环境准备：说明 Flutter 版本、Dart 版本、开发工具（Android Studio/VS Code + Flutter 插件）、原生环境（Android SDK/iOS Xcode）的要求；
+   3.1  环境准备：说明 Flutter 版本、Dart 版本、开发工具（Android Studio/VS Code + Flutter 插件）、原生环境（Android SDK/iOS Xcode/Harmony）的要求；
    3.2  项目初始化：提供完整的项目创建命令（flutter create 项目名）、目录结构搭建步骤；
    3.3  依赖安装：列出所有必需依赖+可选依赖，提供 flutter pub get 安装命令，说明依赖配置注意事项；
    3.4  代码部署：说明如何将提供的代码替换/复制到项目对应目录，注意事项（路径修改/配置调整）；

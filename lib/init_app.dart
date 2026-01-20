@@ -10,6 +10,7 @@ import 'datasource/list_remote_data_source.dart';
 import 'repository/auth_repository.dart';
 import 'repository/list_repository.dart';
 import 'service/oauth_service.dart';
+import 'service/theme_service.dart';
 import 'utils/utils.dart';
 
 Future<void> initApp() async {
@@ -17,6 +18,10 @@ Future<void> initApp() async {
 
   await PrefsUtil.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
+
+  if (!Get.isRegistered<ThemeService>()) {
+    Get.put(ThemeService(), permanent: true);
+  }
 
   if (!Get.isRegistered<OauthService>()) {
     Get.put(OauthService(), permanent: true);
